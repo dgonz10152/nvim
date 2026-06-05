@@ -8,8 +8,9 @@ return {
     opts = {
         keymap = {
             preset = "default",
-            ["<S-CR"] = {"select_and_accept", "fallback"},
             ["<C-y>"] = {},
+            ["<Tab>"] = { "select_and_accept", "fallback" },
+            ["<S-Tab>"] = { "fallback" },
         },
         appearance = {
             nerd_font_variant = "mono",
