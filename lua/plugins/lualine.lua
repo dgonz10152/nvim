@@ -5,6 +5,12 @@ return {
     config = function()
         local catppuccin = require("catppuccin.palettes").get_palette("mocha")
 
+        local function claude_status()
+            local ok, cc = pcall(require, "claudecode")
+            if not ok or not cc.state or not cc.state.initialized then return "" end
+            return cc.is_claude_connected() and "✻ claude" or ""
+        end
+
         local theme = {
             normal   = { a = { fg = catppuccin.base, bg = catppuccin.blue,    gui = "bold" }, b = { fg = catppuccin.text, bg = catppuccin.surface0 }, c = { fg = catppuccin.text, bg = catppuccin.base } },
             insert   = { a = { fg = catppuccin.base, bg = catppuccin.green,   gui = "bold" } },
@@ -24,7 +30,9 @@ return {
             sections = {
                 lualine_a = { "mode" },
                 lualine_b = { { "branch", icon = "◆" }, "filename" },
-                lualine_c = {},
+                lualine_c = {
+                    { claude_status, color = { fg = catppuccin.mauve } },
+                },
                 lualine_x = { "encoding", "fileformat", { "filetype", colored = true, icon = { align = "right" } } },
                 lualine_y = { "progress" },
                 lualine_z = { "location" },
