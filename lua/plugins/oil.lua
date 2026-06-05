@@ -16,6 +16,51 @@ return {
         },
         win_options = {
           wrap = true,
+          winbar = "%!v:lua.require'oil'.get_current_dir()",
+        },
+        keymaps = {
+          ["<CR>"] = {
+            desc = "Open entry, closing all oil buffers if it's a file",
+            callback = function()
+              local oil = require("oil")
+              local entry = oil.get_cursor_entry()
+              if not entry then return end
+              if entry.type == "directory" then
+                oil.select()
+              else
+                local target = oil.get_current_dir() .. entry.name
+                local oil_bufs = {}
+                for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+                  if vim.api.nvim_buf_is_loaded(buf)
+                    and vim.bo[buf].filetype == "oil" then
+                    table.insert(oil_bufs, buf)
+                  end
+                end
+                vim.cmd("edit " .. vim.fn.fnameescape(target))
+                for _, buf in ipairs(oil_bufs) do
+                  if vim.api.nvim_buf_is_valid(buf) then
+                    pcall(vim.api.nvim_buf_delete, buf, { force = true })
+                  end
+                end
+              end
+            end,
+          },
+          ["<S-CR>"] = {
+            desc = "Open entry in vertical split",
+            callback = function()
+              local oil = require("oil")
+              local entry = oil.get_cursor_entry()
+              if not entry then return end
+              local target = oil.get_current_dir() .. entry.name
+              vim.cmd("vsplit")
+              vim.cmd("wincmd l")
+              if entry.type == "directory" then
+                oil.open(target)
+              else
+                vim.cmd("edit " .. vim.fn.fnameescape(target))
+              end
+            end,
+          },
         },
       })
     end,
