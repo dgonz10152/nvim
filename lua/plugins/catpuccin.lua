@@ -6,6 +6,11 @@ return {
   config = function()
     require("catppuccin").setup({
       flavour = "latte", -- latte, frappe, macchiato, mocha
+      custom_highlights = function(colors)
+        return {
+          Folded = { fg = colors.red },
+        }
+      end,
       transparent_background = false,
       integrations = {
         treesitter = true,

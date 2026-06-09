@@ -35,6 +35,15 @@ Personal Neovim configuration. Entry point is `init.lua`, which loads `config.la
 | `<leader>p` | n | Previous harpoon file |
 | `<leader>n` | n | Next harpoon file |
 
+### Folding (treesitter)
+
+| Key | Mode | Action |
+| --- | --- | --- |
+| `za` | n | Toggle fold under cursor |
+| `zo` / `zc` | n | Open / close fold |
+| `zR` | n | Open all folds |
+| `zM` | n | Close all folds |
+
 ### Diagnostics
 
 | Key | Mode | Action |
