@@ -35,6 +35,12 @@ Personal Neovim configuration. Entry point is `init.lua`, which loads `config.la
 | `<leader>p` | n | Previous harpoon file |
 | `<leader>n` | n | Next harpoon file |
 
+### Diffview
+
+| Key | Mode | Action |
+| --- | --- | --- |
+| `<leader>hh` | n | Toggle Diffview open/close |
+
 ### Folding (treesitter)
 
 | Key | Mode | Action |
