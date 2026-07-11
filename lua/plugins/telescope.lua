@@ -27,8 +27,12 @@ return {
             },
             pickers = {
                 find_files = {
-                    hidden = true,
-                    no_ignore = true,
+                    -- Respect .gitignore, but re-add .env and .env.local (which are usually gitignored)
+                    find_command = {
+                        "sh",
+                        "-c",
+                        [[ { fd --type f --hidden --exclude .git; fd --type f --hidden --no-ignore --exclude .git '^\.env(\.local)?$'; } | awk '!seen[$0]++' ]],
+                    },
                     previewer = true,
                 },
             },
