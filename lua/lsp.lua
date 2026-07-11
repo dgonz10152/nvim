@@ -1,7 +1,22 @@
 -- clangd
 vim.lsp.config("clangd", {
-    cmd = { "clangd" },
-    filetypes = { "c", "cpp", "objc", "objcpp" },
+    cmd = {
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--header-insertion=iwyu",
+        "--completion-style=detailed",
+    },
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+    root_markers = {
+        ".clangd",
+        ".clang-tidy",
+        ".clang-format",
+        "compile_commands.json",
+        "compile_flags.txt",
+        "CMakeLists.txt",
+        ".git",
+    },
 })
 
 -- lua_ls (Neovim-aware)
