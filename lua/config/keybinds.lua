@@ -17,6 +17,8 @@ vim.keymap.set("n", "<leader>hh", function()
     vim.cmd("DiffviewClose")
   end
 end, { desc = "Toggle Diffview" })
+vim.keymap.set("n", "<leader>hf", "<cmd>DiffviewFileHistory %<cr>", { desc = "File history (current file)" })
+vim.keymap.set("n", "<leader>hF", "<cmd>DiffviewFileHistory<cr>", { desc = "File history (branch)" })
 
 -- Diagnostics
 vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, { desc = "Next diagnostic" })

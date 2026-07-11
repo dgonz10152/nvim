@@ -40,6 +40,8 @@ Personal Neovim configuration. Entry point is `init.lua`, which loads `config.la
 | Key | Mode | Action |
 | --- | --- | --- |
 | `<leader>hh` | n | Toggle Diffview open/close |
+| `<leader>hf` | n | File history (current file) |
+| `<leader>hF` | n | File history (branch) |
 
 ### Folding (treesitter)
 
