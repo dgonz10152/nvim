@@ -44,6 +44,19 @@ vim.lsp.config("pyright", {
     cmd = { "pyright-langserver", "--stdio" },
     filetypes = { "python" },
     root_markers = { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", "pyrightconfig.json" },
+    before_init = function(_, config)
+        -- Point pyright at the project's virtualenv interpreter so installed
+        -- packages (torch, numpy, ...) resolve instead of the global python.
+        local root = config.root_dir
+        if root then
+            local venv_py = root .. "/.venv/bin/python"
+            if vim.uv.fs_stat(venv_py) then
+                config.settings = config.settings or {}
+                config.settings.python = config.settings.python or {}
+                config.settings.python.pythonPath = venv_py
+            end
+        end
+    end,
     settings = {
         python = {
             analysis = {
