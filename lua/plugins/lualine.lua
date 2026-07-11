@@ -12,12 +12,12 @@ return {
         end
 
         local theme = {
-            normal   = { a = { fg = catppuccin.base, bg = catppuccin.blue,    gui = "bold" }, b = { fg = catppuccin.text, bg = catppuccin.surface0 }, c = { fg = catppuccin.text, bg = catppuccin.base } },
+            normal   = { a = { fg = catppuccin.base, bg = catppuccin.blue,    gui = "bold" }, b = { fg = catppuccin.text, bg = "NONE" }, c = { fg = catppuccin.text, bg = "NONE" } },
             insert   = { a = { fg = catppuccin.base, bg = catppuccin.green,   gui = "bold" } },
             visual   = { a = { fg = catppuccin.base, bg = catppuccin.mauve,   gui = "bold" } },
             replace  = { a = { fg = catppuccin.base, bg = catppuccin.red,     gui = "bold" } },
             command  = { a = { fg = catppuccin.base, bg = catppuccin.peach,   gui = "bold" } },
-            inactive = { a = { fg = catppuccin.overlay0, bg = catppuccin.base }, b = { fg = catppuccin.overlay0, bg = catppuccin.base }, c = { fg = catppuccin.overlay0, bg = catppuccin.base } },
+            inactive = { a = { fg = catppuccin.overlay0, bg = "NONE" }, b = { fg = catppuccin.overlay0, bg = "NONE" }, c = { fg = catppuccin.overlay0, bg = "NONE" } },
         }
 
         require("lualine").setup({
