@@ -15,6 +15,7 @@ Personal Neovim configuration. Entry point is `init.lua`, which loads `config.la
 | --- | --- | --- |
 | `<leader>e` | n | Open Oil file explorer |
 | `<leader>ff` | n | Telescope find files |
+| `<leader>cp` | n | Copy absolute filepath |
 
 ### Completion (blink.cmp)
 

@@ -20,6 +20,11 @@ end, { desc = "Toggle Diffview" })
 vim.keymap.set("n", "<leader>hf", "<cmd>DiffviewFileHistory %<cr>", { desc = "File history (current file)" })
 vim.keymap.set("n", "<leader>hF", "<cmd>DiffviewFileHistory<cr>", { desc = "File history (branch)" })
 
+-- Copy filepath
+vim.keymap.set("n", "<leader>cp", function()
+  vim.fn.setreg("+", vim.fn.expand("%:p"))
+end, { desc = "Copy absolute filepath" })
+
 -- Diagnostics
 vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end, { desc = "Next diagnostic" })
 vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = "Prev diagnostic" })
