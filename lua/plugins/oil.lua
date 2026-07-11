@@ -29,6 +29,15 @@ return {
                 oil.select()
               else
                 local target = oil.get_current_dir() .. entry.name
+                local image_ext = {
+                  png = true, jpg = true, jpeg = true, gif = true, bmp = true,
+                  webp = true, tif = true, tiff = true, heic = true, svg = true, ico = true,
+                }
+                local ext = entry.name:lower():match("%.([^.]+)$")
+                if ext and image_ext[ext] then
+                  vim.system({ "open", target })
+                  return
+                end
                 local oil_bufs = {}
                 for _, buf in ipairs(vim.api.nvim_list_bufs()) do
                   if vim.api.nvim_buf_is_loaded(buf)
